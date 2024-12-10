@@ -146,8 +146,10 @@ function getAverage(arr) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  const temp = arr.map((value) => value.length);
+  const length = temp[0];
+  return temp.every((value) => value === length);
 }
 
 /**
@@ -162,8 +164,7 @@ function isSameLength(/* arr */) {
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
 function isValueEqualsIndex(arr) {
-  const result = arr.map((item, index) => (item === index ? 1 : 0));
-  return result.filter((item) => item === 1).length > 0;
+  return arr.some((item, index) => item === index);
 }
 
 /**
@@ -192,8 +193,8 @@ function insertItem(arr, item, index) {
  *    getHead([ 'a', 'b', 'c', 'd'], 3) => [ 'a', 'b', 'c' ]
  *    getHead([ 'a', 'b', 'c', 'd'], 0) => []
  */
-function getHead(/* arr, n */) {
-  throw new Error('Not implemented');
+function getHead(arr, n) {
+  return arr.slice(0, n);
 }
 
 /**
