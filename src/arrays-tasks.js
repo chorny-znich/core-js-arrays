@@ -255,8 +255,9 @@ function toStringList(arr) {
  *   distinct([ 1, 1, 2, 2, 3, 3, 4, 4]) => [ 1, 2, 3, 4]
  *   distinct([]) => []
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  const result = new Set(arr);
+  return Array.from(result);
 }
 
 /**
@@ -537,8 +538,34 @@ function shiftArray(/* arr, n */) {
  *   sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]) => [ 'eight','eight','nine','nine']
  *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const digitsObject = {
+    zero: 0,
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7,
+    eight: 8,
+    nine: 9,
+  };
+  const digitsArr = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+  let tempArr = arr.map((value) => digitsObject[value]);
+  tempArr = tempArr.sort((a, b) => a - b);
+  return tempArr.map((value) => digitsArr[value]);
 }
 
 /**
@@ -560,8 +587,19 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const result = arr;
+  const middle = arr.length / 2;
+  const middleElement = arr.length % 2 === 0 ? 0 : Math.trunc(arr.length / 2);
+  let head = [];
+  if (middleElement === 0) {
+    head = result.splice(0, middle);
+  } else {
+    head = result.splice(0, middle + 1);
+    result.push(head.pop());
+  }
+  head.map((value) => result.push(value));
+  return result;
 }
 
 module.exports = {
